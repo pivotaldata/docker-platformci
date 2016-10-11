@@ -10,9 +10,10 @@ MAINTAINER skahler@pivotal.io
 #
 # Version 0.1
 #########################
-RUN apt-get update -y
+RUN apt-get update -y; apt-get -y upgrade; apt-get autoremove ; apt-get clean
 RUN apt-get install -y python python-pip postgresql nodejs-legacy npm
 RUN pip install paramiko
+RUN pip install --upgrade google-api-python-client
 RUN npm install -g azure-cli
 RUN mkdir -p ~/.azure/
 RUN echo '{"telemetry":false}' > ~/.azure/telemtry.json
